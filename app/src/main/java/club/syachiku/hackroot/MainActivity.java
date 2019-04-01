@@ -5,28 +5,45 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
+
+import shellService.util.ShellUtil;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
+    private ScrollView scrollView;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btnProcess = findViewById(R.id.btn_process);
-        final EditText editText = findViewById(R.id.cmd_input);
+        Button btnUninstall = findViewById(R.id.btn_uninstall);
+        editText = findViewById(R.id.cmd_input);
         textView = findViewById(R.id.tv_output);
+        scrollView = findViewById(R.id.text_container);
 
         btnProcess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new SocketClient(editText.getText().toString(), new SocketClient.SocketListener() {
-                    @Override
-                    public void onMessage(String msg) {
-                        showOnTextView(msg);
-                    }
-                });
+                sendMessage(editText.getText().toString());
+            }
+        });
+        btnUninstall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessage("uninstall");
+            }
+        });
+    }
+
+    private void sendMessage(String msg) {
+        new SocketClient(msg, new SocketClient.SocketListener() {
+            @Override
+            public void onMessage(String msg) {
+                showOnTextView(msg);
             }
         });
     }
@@ -41,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     textView.setText(msg);
                 }
+                scrollView.smoothScrollTo(0, scrollView.getHeight());
             }
         });
     }

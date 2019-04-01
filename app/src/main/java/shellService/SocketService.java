@@ -60,7 +60,7 @@ public class SocketService {
                 bufferedReader.close();
                 socket.close();
             } catch (IOException e) {
-                System.out.println("socket 连接线程发生错误：" + e.toString());
+                System.out.println("socket connection error：" + e.toString());
             }
         }
     }
