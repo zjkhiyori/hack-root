@@ -6,6 +6,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class SocketService {
     private SocketListener listener;
@@ -17,18 +21,27 @@ public class SocketService {
             System.out.println("----------ready start service-----------");
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("server running " + PORT + " port");
+            ArrayBlockingQueue<Runnable> queue = new ArrayBlockingQueue<>(10);
+            ThreadPoolExecutor executor = new ThreadPoolExecutor(
+                    5,
+                    10,
+                    5000,
+                    TimeUnit.MILLISECONDS,
+                    queue
+                    );
             while (true) {
                 Socket socket = serverSocket.accept();
                 System.out.println("accept request");
-                new processMsg(socket).start();
+                executor.execute(new processMsg(socket));
             }
         } catch (Exception e) {
             System.out.println("SocketServer create Exception:" + e);
         }
     }
 
-    class processMsg extends Thread {
+    class processMsg implements Runnable {
         Socket socket;
+
         public processMsg(Socket s) {
             socket = s;
         }

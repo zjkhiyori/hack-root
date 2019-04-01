@@ -32,7 +32,7 @@ public class SocketClient {
                     e.printStackTrace();
                 }
             }
-        });
+        }).start();
     }
 
     private void readServerData(final Socket socket) {
