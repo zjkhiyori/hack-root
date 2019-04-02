@@ -10,6 +10,7 @@ import android.util.Log;
 
 public class SocketClient {
     private final String TAG = "HackRoot SocketClient";
+    private final int PORT = 10500;
     private SocketListener listener;
     private PrintWriter printWriter;
 
@@ -20,7 +21,7 @@ public class SocketClient {
             public void run() {
                 Socket socket = new Socket();
                 try {
-                    socket.connect(new InetSocketAddress("127.0.0.1", 10255), 3000);
+                    socket.connect(new InetSocketAddress("127.0.0.1", PORT), 3000);
                     socket.setSoTimeout(3000);
                     printWriter = new PrintWriter(socket.getOutputStream(), true);
                     Log.d(TAG, "client send: " + cmd);
