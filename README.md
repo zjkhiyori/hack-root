@@ -6,11 +6,19 @@ hack-root是一个可以让系统免root，App仍能获取高级权限的一个d
 * 开始前请确保你的Android设备已经开启调试模式
 * Clone工程
 * 将`${rootProject}/libs/server.dex`文件push至你的android设备目录的`/data/local/tmp/`
-    * `adb push ${rootProject}/libs/server.dex /data/local/tmp`
+    ```
+    adb push ${rootProject}/libs/server.dex /data/local/tmp
+    ```
 * 安装最新release的apk
 * 执行启动脚本
-    * 前台执行（拔掉数据线服务会关闭）`bash scripts/launch_silence.sh`
+    * 前台执行（拔掉数据线服务会关闭）
+        ```
+        bash scripts/launch_fore.sh 
+        ```
     * 后台执行（除非重启设备或者kill该服务，否则会一直运行，任务名称为`club.syachiku.hackrootservice`）
+        ```
+        bash scripts/launch_silence.sh 
+        ```
 现在你可以进入HackRoot输入包名随意静默卸载App，以及任何adb能做的事情
 ## License
 ```
