@@ -27,6 +27,8 @@ HackRoot是一个可以让系统免root，App仍能获取高级权限的一个de
 ## 技术参考
 [app_process-shell-use](https://github.com/gtf35/app_process-shell-use)
 
+[android-common](https://github.com/Trinea/android-common)
+
 ## License
 ```
 MIT License
