@@ -20,7 +20,13 @@ HackRoot是一个可以让系统免root，App仍能获取高级权限的一个de
         ```
         bash scripts/launch_silence.sh 
         ```
-现在你可以进入HackRoot输入包名随意静默卸载App，以及任何adb能做的事情
+现在你可以进入HackRoot输入包名随意静默卸载App，或者任何adb能做的事情
+
+若有有趣的想法欢迎fork与pr
+
+## 技术参考
+[app_process-shell-use](https://github.com/gtf35/app_process-shell-use)
+
 ## License
 ```
 MIT License
