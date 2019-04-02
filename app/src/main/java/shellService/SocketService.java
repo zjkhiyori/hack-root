@@ -12,13 +12,12 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class SocketService {
+    private final int PORT = 10500;
     private SocketListener listener;
 
-
-    public SocketService(SocketListener listener, int PORT) {
+    public SocketService(SocketListener listener) {
         this.listener = listener;
         try {
-            System.out.println("----------ready start service-----------");
             ServerSocket serverSocket = new ServerSocket(PORT);
             System.out.println("server running " + PORT + " port");
             ArrayBlockingQueue<Runnable> queue = new ArrayBlockingQueue<>(10);
@@ -31,7 +30,6 @@ public class SocketService {
                     );
             while (true) {
                 Socket socket = serverSocket.accept();
-                System.out.println("accept request");
                 executor.execute(new processMsg(socket));
             }
         } catch (Exception e) {

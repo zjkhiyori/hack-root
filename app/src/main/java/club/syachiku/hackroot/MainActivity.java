@@ -13,28 +13,21 @@ import shellService.util.ShellUtil;
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private ScrollView scrollView;
-    private EditText editText;
+    private EditText uninsTxtInput;
+    private Button btnUnins;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnProcess = findViewById(R.id.btn_process);
-        Button btnUninstall = findViewById(R.id.btn_uninstall);
-        editText = findViewById(R.id.cmd_input);
+        btnUnins = findViewById(R.id.btn_uninstall);
+        uninsTxtInput = findViewById(R.id.pkg_input);
         textView = findViewById(R.id.tv_output);
         scrollView = findViewById(R.id.text_container);
-
-        btnProcess.setOnClickListener(new View.OnClickListener() {
+        btnUnins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendMessage(editText.getText().toString());
-            }
-        });
-        btnUninstall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendMessage("uninstall");
+                sendMessage(uninsTxtInput.getText().toString());
             }
         });
     }

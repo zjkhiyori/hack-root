@@ -1,19 +1,42 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion project.sdk
     defaultConfig {
         applicationId "club.syachiku.hackroot"
-        minSdkVersion 22
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion project.minSdk
+        targetSdkVersion project.sdk
+        versionCode project.versionCode
+        versionName project.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file(KEY_STORE_FILE)
+            storePassword KEY_STORE_PW
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PW
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            // For each separate APK per architecture, set a unique version code as described here:
+            // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
+            def versionCodes = ["armeabi-v7a": 1, "x86": 2]
+            def abi = output.getFilter(com.android.build.OutputFile.ABI)
+            if (abi != null) {  // null for the universal-debug, universal-release variants
+                output.versionCodeOverride =
+                        versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
+            }
+            outputFileName = "hackroot-${defaultConfig.versionName}-${variant.buildType.name}.apk"
         }
     }
 }

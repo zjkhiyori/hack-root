@@ -6,29 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <EditText
-        android:id="@+id/cmd_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:hint="input shell command"
-        app:layout_constraintEnd_toStartOf="@+id/btn_process"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_process"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:text="process"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/pkg_input"
         android:layout_width="0dp"
@@ -39,16 +16,17 @@
         android:hint="input package name"
         app:layout_constraintEnd_toStartOf="@+id/btn_uninstall"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cmd_input" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_uninstall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:text="uninstall"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_process" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/text_container"
@@ -64,7 +42,6 @@
         <TextView
             android:id="@+id/tv_output"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hello" />
+            android:layout_height="wrap_content" />
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
