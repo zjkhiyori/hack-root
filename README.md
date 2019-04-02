@@ -1,5 +1,5 @@
-# hack-root
-hack-root是一个可以让系统免root，App仍能获取高级权限的一个demo，比如静默卸载安装，获取adb调试日志，篡改hosts，杀掉某个服务、进程等等adb shell能做到的一切事情
+# HackRoot
+HackRoot是一个可以让系统免root，App仍能获取高级权限的一个demo，比如静默卸载安装，获取adb调试日志，篡改hosts，杀掉某个服务、进程等等adb shell能做到的一切事情
 
 ![screenshot](https://github.com/zjkhiyori/hack-root/blob/master/example/screenshot.png)
 
