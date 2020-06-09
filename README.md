@@ -3,7 +3,7 @@
 [Chinese](#hackroot-cn)
 
 # HackRoot EN
-HackRoot is a demo that you can get adb shell level permission with out rooted system, such as uninstall app silently, get adb logcat, hack hosts, kill a procces or service etc...  
+HackRoot is a demo that you can get adb shell level permission with out rooted system, such as uninstall app silently, get adb logcat, hack hosts, kill a proccess or service etc...  
 
 ![example](https://github.com/zjkhiyori/hack-root/blob/master/example/example.gif)
 
