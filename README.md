@@ -27,7 +27,7 @@ HackRoot is a demo that you can get adb shell level permission with out rooted s
         
 Now you can use Hackroot to uninstall any app by input package id, or anything adb shell could do
 
-If you have any question or idea, pls feel free to hang up a pr or issue
+If you have any question or idea, pls feel free to create a pr or issue
 
 ## Technical reference
 
